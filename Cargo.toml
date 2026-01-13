@@ -1,0 +1,19 @@
+[package]
+name = "discord-dynamic-status-hyprland"
+authors = ["kazuha046"]
+description = "Dynamic Discord Rich Presence based on active Hyprland windows"
+repository = "https://github.com/mrkirill046/discord-dynamic-status-hyprland"
+homepage = "https://github.com/mrkirill046/discord-dynamic-status-hyprland"
+license-file = "LICENSE"
+keywords = ["discord", "rpc", "hyprland", "wayland", "dynamic"]
+categories = ["command-line-utilities", "games", "network-programming"]
+version = "1.0.0"
+edition = "2024"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+discord-rich-presence = "1.0"
+chrono = "0.4"
+directories = "6.0"
+lazy_static = "1.5"
