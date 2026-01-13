@@ -9,7 +9,7 @@ jobs:
   build:
     strategy:
       matrix:
-        platform: [ubuntu-22.04, macos-latest, windows-latest]
+        platform: [ubuntu-22.04]
     runs-on: ${{ matrix.platform }}
 
     steps:
@@ -31,22 +31,6 @@ jobs:
         with:
           name: rust-cli-${{ matrix.platform }}
           path: target/release/
-
-      - name: 📦 Upload Rust CLI artifacts to GitHub Release (Windows)
-        if: startsWith(github.ref, 'refs/tags/') && runner.os == 'Windows'
-        uses: softprops/action-gh-release@v1
-        with:
-          files: target/release/*.exe
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: 📦 Upload Rust CLI artifacts to GitHub Release (macOS)
-        if: startsWith(github.ref, 'refs/tags/') && runner.os == 'macOS'
-        uses: softprops/action-gh-release@v1
-        with:
-          files: target/release/*
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 📦 Upload Rust CLI artifacts to GitHub Release (Linux)
         if: startsWith(github.ref, 'refs/tags/') && runner.os == 'Linux'
